@@ -1,0 +1,278 @@
+html, body, h1, h2, h3, h4, h5, h6, p, ul, li, a, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #ffffff, #f3f3f3);
+    color: #333333;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.page_Header {
+    background: linear-gradient(to bottom, #e8f0ff, #c5d8f3);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #a7c4ed;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navigation_list {
+    list-style: none;
+    display: flex;
+}
+
+.navigation_list li {
+    margin: 0 20px;
+}
+
+.navigation_list li a {
+    text-decoration: none;
+    color: #333333;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.navigation_list li a:hover {
+    color: #4CAF50;
+}
+
+.text_header_list {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.text_header_list p {
+    margin: 0 10px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.container_button_header {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.container_button_header:hover {
+    background-color: #45a049;
+}
+
+
+.page_Main {
+    padding: 50px;
+}
+
+.Reasons_catalog, .Facilities_catalog, .Advantages_catalog, .Questions, .Experience_catalog {
+    margin-bottom: 40px;
+    position: relative; 
+}
+
+.Reasons_catalog, .Facilities_catalog, .Advantages_catalog, .Questions, .Experience_catalog {
+    background: linear-gradient(to bottom, #f3f3f3, #e8f0ff);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1; 
+}
+
+.Reasons_catalog:hover, .Facilities_catalog:hover, .Advantages_catalog:hover, .Questions:hover, .Experience_catalog:hover {
+    transform: translateY(-5px);
+}
+
+.page_Footer {
+    background: linear-gradient(to bottom, #e8f0ff, #c5d8f3);
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+    border-top: 2px solid #a7c4ed;
+}
+
+.page_Footer p {
+    color: #555555;
+}
+
+header, footer {
+    position: relative;
+    z-index: 1;
+}
+
+.page_Main {
+    position: relative;
+    z-index: 0;
+}
+
+header::before,
+footer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+header::before {
+    background: linear-gradient(to right, #c5d8f3, #e8f0ff);
+}
+
+footer::after {
+    background: linear-gradient(to right, #e8f0ff, #c5d8f3);
+}
+
+h2 {
+    color: #4CAF50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.Reasons_catalog_paragraph, .Facilities_catalog_paragraph, .Advantages_catalog_list, .Questions p, .Experience_catalog_item h3, .Experience_catalog_item p {
+    color: #555555;
+    line-height: 1.6;
+}
+
+.Reasons_catalog_paragraph:first-letter, .Facilities_catalog_paragraph:first-letter, .Advantages_catalog_list:first-letter, .Questions p:first-letter, .Experience_catalog_item h3:first-letter {
+    font-size: 150%;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-right: 5px;
+}
+
+.Reasons_catalog_paragraph::before, .Facilities_catalog_paragraph::before, .Advantages_catalog_list::before, .Questions p::before, .Experience_catalog_item h3::before {
+    content: '►';
+    margin-right: 5px;
+}
+
+.Reasons_catalog_paragraph::after, .Facilities_catalog_paragraph::after, .Advantages_catalog_list::after, .Questions p::after, .Experience_catalog_item h3::after {
+    content: '';
+}
+
+.Questions h2 {
+    color: #4CAF50;
+}
+
+.Questions p:first-of-type {
+    font-style: italic;
+    color: #777777;
+}
+
+.Experience_catalog_header {
+    color: #4CAF50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.Experience_catalog_item {
+    margin-bottom: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.slideIn {
+    animation: slideIn 0.5s ease-in-out forwards;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse {
+    animation: pulse 1s infinite alternate;
+}
+
+
+.additional-info {
+    background-color: #544caf; 
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.additional-info p {
+    color: white; 
+    margin-bottom: 10px;
+}
+
+.blue-square {
+    background-color: #4CAF50; 
+    width: 100%; 
+    padding: 20px;
+    border-radius: 10px; 
+    margin-top: 20px; 
+    position: relative;
+    z-index: 1;
+.square {
+        background-color: #4CAF50;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        position: relative;
+        z-index: 1;
+    }
+    
+.square p {
+        color: white;
+        margin-bottom: 10px;
+    }
+    
+}
+
