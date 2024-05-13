@@ -26,4 +26,4 @@ If you encounter any issues or have questions about Repee, please don't hesitate
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE), which means you are free to use, modify, and distribute the software for personal or commercial purposes. See the [License](LICENSE) file for details.
+This project is licensed under the MIT License, which means you are free to use, modify, and distribute the software for personal or commercial purposes.
