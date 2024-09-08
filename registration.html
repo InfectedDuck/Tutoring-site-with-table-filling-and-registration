@@ -4,26 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css" />
-    <title>Registration Form</title>
+    <title>Регистрация и Вход</title>
 </head>
 <body>
-    <h2>Registration Form</h2>
-    <form id="registrationForm">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required><br>
-        
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br>
-        
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br>
-        
-        <label for="confirm_password">Confirm Password:</label><br>
-        <input type="password" id="confirm_password" name="confirm_password" required><br>
-        
-        <input type="button" value="Register" onclick="addRow()">
-    </form>
+    <h2>Регистрация и Вход</h2>
+    <button id="toggleButton" onclick="toggleForm()">Переключиться на регистрацию</button>
+    <!-- Login Form -->
+    <div id="loginSection">
+        <h3>Вход</h3>
+        <form id="loginForm">
+            <label for="loginName">Имя:</label><br>
+            <input type="text" id="loginName" name="loginName" required><br>
+            
+            <label for="loginPassword">Пароль:</label><br>
+            <input type="password" id="loginPassword" name="loginPassword" required><br>
+            
+            <input type="button" value="Login" onclick="login()">
+        </form>
+        <p id="loginError" style="color: red;"></p>
+    </div>
+
+    <!-- Registration Form -->
+    <div id="registrationSection" style="display:none;">
+        <h3>Регистрация</h3>
+        <form id="registrationForm">
+            <label for="name">Имя:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            
+            <label for="email">Почта:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            
+            <label for="password">Пароль:</label><br>
+            <input type="password" id="password" name="password" required><br>
+            
+            <label for="confirm_password">Повторите Пароль:</label><br>
+            <input type="password" id="confirm_password" name="confirm_password" required><br>
+            
+            <input type="button" value="Register" onclick="addRow()">
+        </form>
+    </div>
     
+    <!-- Submitted Data -->
     <h3>Submitted Data:</h3>
     <table id="dataTable">
         <tr>
@@ -35,41 +56,101 @@
     </table>
     
     <script>
+        const adminUsername = "123admin";
+        const adminPassword = "123admin123321";
+        let isAdmin = false;
+
+        // Mock database to store users (only stored in session)
+        let users = [];
+
+        function login() {
+            const loginName = document.getElementById("loginName").value;
+            const loginPassword = document.getElementById("loginPassword").value;
+
+            // Check if user is admin
+            if (loginName === adminUsername && loginPassword === adminPassword) {
+                isAdmin = true;
+                document.getElementById("loginSection").style.display = "none";
+                document.getElementById("registrationSection").style.display = "block";
+                document.getElementById("loginError").innerHTML = "";
+                alert("You are logged in as admin. You can now view all data.");
+            } 
+            else if (users.some(user => user.name === loginName && user.password === loginPassword)) {
+                isAdmin = false;
+                document.getElementById("loginSection").style.display = "none";
+                document.getElementById("registrationSection").style.display = "none";
+                document.getElementById("loginError").innerHTML = "";
+                alert("Login successful. You can now register.");
+            } 
+            else {
+                document.getElementById("loginError").innerHTML = "Invalid credentials. Please try again.";
+            }
+        }
+
         function addRow() {
-            var name = document.getElementById("name").value;
-            var email = document.getElementById("email").value;
-            var password = "*****"; 
-            
-            var table = document.getElementById("dataTable");
-            var row = table.insertRow(-1);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(3);
-            
-            cell1.innerHTML = name;
-            cell2.innerHTML = email;
-            cell3.innerHTML = password;
-            cell4.innerHTML = '<button onclick="editRow(this)">Edit</button> <button onclick="deleteRow(this)">Delete</button>';
-            
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm_password").value;
+
+            // Password validation
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            // Add user to mock database
+            users.push({ name, email, password });
+
+            // Display the data in the table for the admin only
+            if (isAdmin) {
+                const table = document.getElementById("dataTable");
+                const row = table.insertRow(-1);
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
+                const cell3 = row.insertCell(2);
+                const cell4 = row.insertCell(3);
+
+                cell1.innerHTML = name;
+                cell2.innerHTML = email;
+                cell3.innerHTML = "*****"; // Masked password
+                cell4.innerHTML = '<button onclick="editRow(this)">Edit</button> <button onclick="deleteRow(this)">Delete</button>';
+            }
+
+            // Clear form
             document.getElementById("name").value = "";
             document.getElementById("email").value = "";
             document.getElementById("password").value = "";
             document.getElementById("confirm_password").value = "";
         }
-        
+
         function editRow(button) {
-            var row = button.parentNode.parentNode;
-            var cells = row.getElementsByTagName("td");
-            
+            const row = button.parentNode.parentNode;
+            const cells = row.getElementsByTagName("td");
+
             document.getElementById("name").value = cells[0].innerHTML;
             document.getElementById("email").value = cells[1].innerHTML;
             row.parentNode.removeChild(row);
         }
-        
+
         function deleteRow(button) {
-            var row = button.parentNode.parentNode;
+            const row = button.parentNode.parentNode;
             row.parentNode.removeChild(row);
+        }
+        function toggleForm() {
+            const loginSection = document.getElementById("loginSection");
+            const registrationSection = document.getElementById("registrationSection");
+            const toggleButton = document.getElementById("toggleButton");
+
+            if (loginSection.style.display === "none") {
+                loginSection.style.display = "block";
+                registrationSection.style.display = "none";
+                toggleButton.innerHTML = "Переключиться на регистрацию";
+            } else {
+                loginSection.style.display = "none";
+                registrationSection.style.display = "block";
+                toggleButton.innerHTML = "Переключиться на вход";
+            }
         }
     </script>
 </body>
