@@ -52,18 +52,3 @@ The website is styled using advanced CSS techniques to ensure a visually appeali
 
 - **Form Handling**: JavaScript is used to handle form submissions, manage user data, and control visibility of different sections based on login status.
 - **Admin Controls**: Special JavaScript logic is implemented to ensure only users with admin credentials can view and manage the data table.
-
-## License
-
-This project is licensed under the MIT License. This means you are free to use, modify, and distribute the software for both personal and commercial purposes. For more details, please refer to the [MIT License](https://opensource.org/licenses/MIT).
-
-## Contribution
-
-Contributions to the Repee project are welcome. Please adhere to the following guidelines:
-- Fork the repository and create a pull request with your proposed changes.
-- Ensure all code adheres to the existing style and conventions.
-- Include appropriate tests and documentation for any new features or changes.
-
-## Contact
-
-For further inquiries, support, or feedback, please contact the project maintainer at [email@example.com].
