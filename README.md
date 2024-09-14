@@ -52,3 +52,7 @@ The website is styled using advanced CSS techniques to ensure a visually appeali
 
 - **Form Handling**: JavaScript is used to handle form submissions, manage user data, and control visibility of different sections based on login status.
 - **Admin Controls**: Special JavaScript logic is implemented to ensure only users with admin credentials can view and manage the data table.
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). See the [LICENSE](LICENSE) file for details.
