@@ -55,4 +55,8 @@ The website is styled using advanced CSS techniques to ensure a visually appeali
 
 ## License
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). See the [LICENSE](LICENSE.txt) file for details.
+This project is licensed under the MIT License.  
+You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of this software, subject to the terms of the MIT License.  
+
+For full details, see the [LICENSE](LICENSE) file.
+
